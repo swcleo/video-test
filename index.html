@@ -8,26 +8,6 @@
     <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
   </head>
   <body>
-    <video
-      id="my-video"
-      class="video-js"
-      preload="auto"
-      width="640"
-      height="264"
-      muted="true"
-      playsinline="true"
-      webkit-playsinline="true"
-      controlslist="nodownload"
-      src="./t.mp4"
-      data-setup='{ "autoplay": true, "controls": false, "preload": "auto" }'
-    >
-    </video>
-
-    <script>
-      var videoPlayer = videojs("my-video");
-      videoPlayer.on("loadeddata", () => {
-        videoPlayer.play();
-      });
-    </script>
+    <iframe src="./video.html" width="640" height="240" frameborder="0"></iframe>
   </body>
 </html>
