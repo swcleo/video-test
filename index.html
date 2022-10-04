@@ -11,28 +11,52 @@
     <video
       id="my-video"
       class="video-js"
-      preload="auto"
       width="640"
       height="264"
-      muted="true"
-      playsinline="true"
-      webkit-playsinline="true"
-      controlslist="nodownload"
-      src="./t.mp4"
-      data-setup='{ "autoplay": true, "controls": false, "preload": "auto" }'
+      data-setup='{ "muted": true, "autoplay": true, "controls": false, "playsinline": true }'
     >
+      <source src="s2.mp4" type="video/mp4" />
     </video>
 
     <div id="info"></div>
 
-    <script>
-      var videoPlayer = videojs("my-video");
-      videoPlayer.on("loadeddata", () => {
-        videoPlayer.play();
-      });
+    <button onclick="change()">更換來源</button>
 
+    <script>
+      var sources = [
+        {
+          src: "s1.mp4",
+          type: "video/mp4",
+        },
+        {
+          src: "s2.mp4",
+          type: "video/mp4",
+        },
+      ];
+
+      var current = "";
 
       document.getElementById("info").innerHTML = window.navigator.userAgent;
+
+      var videoPlayer = videojs("my-video");
+      var videoEl = document.getElementById("my-video");
+
+      function play() {
+        videoPlayer.play();
+      }
+
+      function change() {
+        let src;
+        if (current && current === "s1") {
+          src = sources[1];
+          current = "s2";
+        } else {
+          src = sources[0];
+          current = "s1";
+        }
+        videoPlayer.src(src);
+        videoPlayer.play();
+      }
     </script>
   </body>
 </html>
